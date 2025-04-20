@@ -74,37 +74,7 @@
              <strong>Итого: ₽<span id="total">0</span></strong><div id="cart-items"></div>
       
          </div>
-    
-    <script>
-      let cart = [];
-    
-      function addToCart(name, price) {
-        const existing = cart.find(item => item.name === name);
-        if (existing) {
-          existing.qty += 1;
-        } else {
-          cart.push({ name, price, qty: 1 });
-        }
-        updateCart();
-      }
-    
-      function updateCart() {
-        const cartContainer = document.getElementById("cart-items");
-        cartContainer.innerHTML = "";
-        let total = 0;
-    
-        cart.forEach(item => {
-          total += item.price * item.qty;
-          cartContainer.innerHTML += `
-            <div class="cart-item">
-              ${item.name} x ${item.qty} — ₽${item.price * item.qty}
-            </div>
-          `;
-        });
-    
-        document.getElementById("total").innerText = total.toLocaleString("ru-RU");
-      }
-    </script> 
+
   </main>
           
      
