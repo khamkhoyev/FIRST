@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Магазин Мобильных Телефонов</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <header>
+     <h1>  Моби Инг  </h1>
+            <nav>
+                <a href="./catalog.html" >Каталог</a>
+                <a href="#cart">Корзина</a>
+                <a href='#contacts'>Контакты</a>
+            </nav>
+  </header>
+  <main>
+    <h2 class='a1'>Новинка</h2>
+   
+    <div class="products">
+      <div class="product">
+        <img src="https://static.shop.megafon.ru/images/400/goods/1776/177656_original_front.png" alt="iPhone 15">
+        <h3>iPhone 15</h3>
+        <p>₽ 89,990</p>
+        <button class="btn" onclick="addToCart('iPhone 15', 89990)">В корзину</button>
+      </div>
+
+     
+
+      <div class="product">
+        <img src="https://avatars.mds.yandex.net/i?id=15753dba68a07b4c5b016fce63c80f8ae61fc3a2-12529777-images-thumbs&n=13" alt="Xiaomi 13 Pro">
+        <h3>Xiaomi 13 Pro</h3>
+        <p>₽ 59,990</p>
+        <button class="btn" onclick="addToCart('Xiaomi 13 Pro', 59990)">В корзину</button>
+      </div>
+
+    </div>
+    
+    <div id="cart">
+
+      <h2>Корзина</h2>
+      <div id="cart-items"></div>
+
+    </div>
+
+     <div class="products">
+      <div class="product">
+        <img src="https://static.shop.megafon.ru/images/400/goods/1879/187921_original_front.png" alt="iPhone 16 128GB">
+        <h3>iPhone 16 </h3>
+        <p>₽ 89,990</p>
+        <button class="btn" onclick="addToCart('iPhone 15', 89990)">В корзину</button>
+      </div>
+
+      <div class="product">
+         <img src="https://mi-shop.com/upload/iblock/c1a/hzw3h6byeelee7rtf1jip4ktrf50u9wk.webp" alt="POCO F7 Ultra 16/512GB">
+         <h3>POCO F7 Ultra 16/512GB</h3>
+         <p>₽ 127,999</p>
+         <button class="btn" onclick="addToCart('Samsung Galaxy S24', 79990)">В корзину</button>
+      </div>
+
+      <div class="product">
+        <img src="https://static.shop.megafon.ru/images/400/goods/1871/187140_original_front.png" alt="Xiaomi 13 Pro">
+        <h3>Samsung Galaxy Z Flip6 512GB</h3>
+        <p>₽ 59,990</p>
+        <button class="btn" onclick="addToCart('Samsung Galaxy Z Flip6 512GB', 59990)">В корзину</button>
+      </div>
+      
+    </div>
+          <div id="cart">
+             <h2>Корзина</h2>
+             <div id="cart-items"></div>
+             <strong>Итого: ₽<span id="total">0</span></strong><div id="cart-items"></div>
+      
+         </div>
+    
+    <script>
+      let cart = [];
+    
+      function addToCart(name, price) {
+        const existing = cart.find(item => item.name === name);
+        if (existing) {
+          existing.qty += 1;
+        } else {
+          cart.push({ name, price, qty: 1 });
+        }
+        updateCart();
+      }
+    
+      function updateCart() {
+        const cartContainer = document.getElementById("cart-items");
+        cartContainer.innerHTML = "";
+        let total = 0;
+    
+        cart.forEach(item => {
+          total += item.price * item.qty;
+          cartContainer.innerHTML += `
+            <div class="cart-item">
+              ${item.name} x ${item.qty} — ₽${item.price * item.qty}
+            </div>
+          `;
+        });
+    
+        document.getElementById("total").innerText = total.toLocaleString("ru-RU");
+      }
+    </script> 
+  </main>
+          
+     
+<footer >
+  <a name='contacts'>Контакты</a>
+  <p>Телефон: +7 (999) 123-06-06</p>
+  <p>Email: info@mobi.ing.ru</p>
+  <p>Адрес: г. Назрань, ул. Южная 23, д. 3</p>
+<div class='connect'><p>Связаться с нами</p>
+  <form >
+            <label>Ваше имя:<br>
+                <input type="text" id="name">
+           </label><br>
+     <label>Email:<br>
+          <input type="email" id="email">
+    </label><br>
+        <label>Сообщение:<br>
+           <textarea id="message" rows="4" ></textarea>
+       </label><br>
+        <button class="btn" type="submit">Отправить</button>
+  </form>
+  
+</div>
+  
+</footer>
+
+
+
+
+  
+</body>
+</html>
